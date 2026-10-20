@@ -1,0 +1,19 @@
+round_budget_seconds: 2
+failure_threshold: 2
+cooldown_seconds: 5
+rounds: 3
+interval_seconds: 0.1
+timeout_seconds: 0.2
+max_attempts: 3
+backoff_seconds: 0.01
+max_workers: 4
+services:
+  - name: api
+    url: http://127.0.0.1:8765/ok
+    critical: true
+  - name: worker
+    url: http://127.0.0.1:8765/fail
+  - name: maintenance-db
+    url: http://127.0.0.1:8765/fail
+    critical: true
+    maintenance: true
